@@ -1,5 +1,1 @@
-<<<<<<< HEAD
 allow wpa_socket system:unix_dgram_socket sendto;
-=======
-allow wpa_socket system_server:unix_dgram_socket sendto;
->>>>>>> dba863d27465b97a4b47812ec9c7e045aea22c42

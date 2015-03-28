@@ -22,21 +22,14 @@ TARGET_CPU_ABI2 := armeabi
 TARGET_ARCH_VARIANT := armv7-a-neon
 TARGET_CPU_VARIANT := cortex-a7
 TARGET_CPU_SMP := true
-<<<<<<< HEAD
-=======
 # TARGET_KERNEL_CONFIG := cm_dior_defconfig
->>>>>>> dba863d27465b97a4b47812ec9c7e045aea22c42
 
 ARCH_ARM_HAVE_TLS_REGISTER := true
 
 
 # Kernel
-<<<<<<< HEAD
 #TARGET_KERNEL_CONFIG := msm8226-perf_defconfig
 TARGET_KERNEL_CONFIG := dior_debug_defconfig
-=======
-TARGET_KERNEL_CONFIG := msm8226-perf_defconfig
->>>>>>> dba863d27465b97a4b47812ec9c7e045aea22c42
 BOARD_KERNEL_CMDLINE := console=ttyHSL0,115200,n8 earlyprintk androidboot.console=ttyHSL0 androidboot.hardware=qcom user_debug=31 msm_rtb.filter=0x37
 BOARD_KERNEL_BASE := 0x00000000
 BOARD_KERNEL_PAGESIZE := 2048
@@ -45,10 +38,7 @@ BOARD_MKBOOTIMG_ARGS := --dt device/xiaomi/dior/dt.img --kernel_offset 0x0000800
 BOARD_CUSTOM_BOOTIMG_MK := device/xiaomi/dior/mkbootimg_pre.mk
 TARGET_KERNEL_SOURCE := kernel/xiaomi/dior
 TARGET_PREBUILT_KERNEL := device/xiaomi/dior/kernel
-<<<<<<< HEAD
 BOARD_KERNEL_SEPERATED_DT := true
-=======
->>>>>>> dba863d27465b97a4b47812ec9c7e045aea22c42
 
 # fix this up by examining /proc/mtd on a running device
 # BOARD_BOOTIMAGE_PARTITION_SIZE := 0x00380000
@@ -70,14 +60,10 @@ BOARD_FLASH_BLOCK_SIZE := 131072
 # QCOM HW
 BOARD_USES_QCOM_HARDWARE 	:= true
 TARGET_ENABLE_QC_AV_ENHANCEMENTS := true
-TARGET_QCOM_AUDIO_VARIANT := caf
-TARGET_QCOM_DISPLAY_VARIANT := caf-new
-TARGET_QCOM_MEDIA_VARIANT := caf-new
-<<<<<<< HEAD
-# TARGET_USES_QCOM_BSP := true
-=======
-TARGET_USES_QCOM_BSP := true
->>>>>>> dba863d27465b97a4b47812ec9c7e045aea22c42
+#TARGET_QCOM_AUDIO_VARIANT := caf
+#TARGET_QCOM_DISPLAY_VARIANT := caf-new
+#TARGET_QCOM_MEDIA_VARIANT := caf-new
+#TARGET_USES_QCOM_BSP := true
 
 # Bluetooth
 BOARD_HAVE_BLUETOOTH := true
@@ -103,22 +89,12 @@ TARGET_PROVIDES_LIBLIGHT := true
 TARGET_POWERHAL_VARIANT := qcom
 
 # RIL
-<<<<<<< HEAD
-BOARD_PROVIDES_LIBRIL := true
+# BOARD_PROVIDES_LIBRIL := true
 
 # QC Time
 BOARD_USES_QC_TIME_SERVICES := true
 COMMON_GLOBAL_CFLAGS += -DQCOM_HARDWARE
 # COMMON_GLOBAL_CFLAGS += -DQCOM_BSP
-=======
-# BOARD_PROVIDES_LIBRIL := true
-
-# QC Time
-BOARD_USES_QC_TIME_SERVICES := true
-COMMON_GLOBAL_CFLAGS += -DQCOM_HARDWARE 
-TARGET_USES_QCOM_BSP := true
-COMMON_GLOBAL_CFLAGS += -DQCOM_BSP
->>>>>>> dba863d27465b97a4b47812ec9c7e045aea22c42
 BOARD_HAS_NO_SELECT_BUTTON := true
 
 # Wifi
@@ -176,11 +152,7 @@ TARGET_USERIMAGES_USE_EXT4 := true
 BOARD_RECOVERY_SWIPE := true
 RECOVERY_FSTAB_VERSION = 2
 BOARD_USE_CUSTOM_RECOVERY_FONT := \"roboto_15x24.h\"
-<<<<<<< HEAD
 #BOARD_TOUCH_RECOVERY := true
 BOARD_RECOVERY_SWIPE := true
-=======
-BOARD_TOUCH_RECOVERY := true
->>>>>>> dba863d27465b97a4b47812ec9c7e045aea22c42
 TARGET_SCREEN_HEIGHT := 1280
 TARGET_SCREEN_WIDTH := 720

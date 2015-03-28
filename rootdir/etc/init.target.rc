@@ -1,0 +1,258 @@
+# Copyright (c) 2012, 2014, The Linux Foundation. All rights reserved.
+#
+# Redistribution and use in source and binary forms, with or without
+# modification, are permitted provided that the following conditions are
+# met:
+#     * Redistributions of source code must retain the above copyright
+#       notice, this list of conditions and the following disclaimer.
+#     * Redistributions in binary form must reproduce the above
+#       copyright notice, this list of conditions and the following
+#       disclaimer in the documentation and/or other materials provided
+#       with the distribution.
+#     * Neither the name of The Linux Foundation nor the names of its
+#       contributors may be used to endorse or promote products derived
+#       from this software without specific prior written permission.
+#
+# THIS SOFTWARE IS PROVIDED "AS IS" AND ANY EXPRESS OR IMPLIED
+# WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF
+# MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT
+# ARE DISCLAIMED.  IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS
+# BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
+# CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
+# SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR
+# BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+# WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE
+# OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN
+# IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+#
+#
+
+on early-init
+    mkdir /firmware 0771 system system
+    symlink /data/tombstones /tombstones
+
+on init
+    # Immersioin
+    export VIBE_PIPE_PATH /dev/pipes
+    mkdir /dev/pipes 0771 system system
+
+on charger
+    chown root system /sys/module/qpnp_charger/parameters/charger_monitor
+    chown root system /sys/module/qpnp_charger/parameters/ext_ovp_present
+    chown root system /sys/class/power_supply/battery/input_current_max
+    chown root system /sys/class/power_supply/battery/input_current_trim
+    chown root system /sys/class/power_supply/battery/voltage_min
+    chown system system /sys/power/wake_lock
+    chmod 0664 /sys/class/power_supply/battery/input_current_max
+    chmod 0664 /sys/class/power_supply/battery/input_current_trim
+    chmod 0664 /sys/class/power_supply/battery/voltage_min
+    chmod 0664 /sys/module/qpnp_charger/parameters/charger_monitor
+    write /sys/class/gpio/export 109
+    write /sys/class/gpio/gpio109/direction "out"
+    write /sys/class/gpio/gpio109/value 0
+    chown root system /sys/class/gpio/gpio109/value
+    chmod 0664 /sys/class/gpio/gpio109/value
+    start hvdcp
+    start charger_monitor
+
+
+on fs
+    mount_all fstab.qcom
+
+    # Keeping following partitions outside fstab file. As user may not have
+    # these partition flashed on the device. Failure to mount any partition in fstab file
+    # results in failure to launch late-start class.
+
+    mount ext4 /dev/block/platform/msm_sdcc.1/by-name/system /system wait ro barrier=1
+
+    wait /dev/block/platform/msm_sdcc.1/by-name/userdata
+    exec /system/bin/sh /system/bin/mount_ext4.sh /dev/block/platform/msm_sdcc.1/by-name/userdata /data
+
+    wait /dev/block/platform/msm_sdcc.1/by-name/cache
+    exec /system/bin/sh /system/bin/mount_ext4.sh /dev/block/platform/msm_sdcc.1/by-name/cache /cache
+
+    wait /dev/block/platform/msm_sdcc.1/by-name/persist
+    exec /system/bin/sh /system/bin/mount_ext4.sh /dev/block/platform/msm_sdcc.1/by-name/persist /persist
+    restorecon /persist
+
+    wait /dev/block/platform/msm_sdcc.1/by-name/modem
+    mount vfat /dev/block/platform/msm_sdcc.1/by-name/modem /firmware ro shortname=lower,uid=1000,gid=1000,dmask=227,fmask=337
+
+on post-fs-data
+    mkdir /data/tombstones 0771 system system
+    mkdir /tombstones/modem 0771 system system
+    chmod 777 /data/qmi-framework-tests/qmi_xiaomi_id_test
+
+    chown system system /dev/sysmatdrv
+    chmod 0660 /dev/sysmatdrv
+
+# import cne init file
+on post-fs
+    export LD_PRELOAD /vendor/lib/libNimsWrap.so
+
+on boot
+    insmod /system/lib/modules/adsprpc.ko
+    # Enable writing to led blink node from userspace
+    chown system system /sys/class/leds/red/blink
+    chown system system /sys/class/leds/green/blink
+    # Enable writing to brightness node under torch-light from userspace
+    chown system system /sys/class/leds/torch-light/brightness
+    chown system system /sys/class/input/input0/enabled
+    chown system system /sys/class/input/input1/enabled
+    chown system system /sys/class/input/input2/enabled
+    chown system system /sys/class/input/input3/enabled
+    chown system system /sys/class/input/input4/enabled
+    chown system system /sys/class/input/input5/enabled
+    chown system system /sys/class/input/input6/enabled
+    chown system system /sys/bus/i2c/devices/5-004a/golden_ref
+    chown system system /sys/bus/i2c/devices/5-004b/golden_ref
+
+#Start the qcom-system-daemon service
+service qcomsysd /system/bin/qcom-system-daemon
+    class main
+
+#start camera server as daemon
+service qcamerasvr /system/bin/mm-qcamera-daemon
+    class late_start
+    user camera
+    group camera system inet input graphics
+
+# Allow usb charging to be disabled persistently
+on property:persist.usb.chgdisabled=1
+   write /sys/class/power_supply/battery/charging_enabled 0
+
+on property:persist.usb.chgdisabled=0
+   write /sys/class/power_supply/battery/charging_enabled 1
+
+service time_daemon /system/bin/time_daemon
+   class late_start
+   user root
+   group root
+
+service mpdecision /system/bin/mpdecision --avg_comp
+   user root
+   disabled
+
+#start GNSS/Sensor interface daemon
+service gsiff_daemon /system/bin/gsiff_daemon
+   class late_start
+   user system
+   group gps net_raw
+
+service thermal-engine /system/bin/thermal-engine
+   class main
+   user root
+   group root
+
+service qrngd /system/bin/qrngd -f
+    class main
+    user root
+    group root
+
+
+service qrngp /system/bin/qrngp
+    class main
+    user root
+    group root
+    oneshot
+    disabled
+
+on property:sys.boot_completed=1
+    start qrngp
+
+service qseecomd /system/bin/qseecomd
+    class late_start
+    user root
+    group root
+
+service audiod /system/bin/audiod
+   class late_start
+   user system
+   group system
+
+service adsprpcd /system/bin/adsprpcd
+   class main
+   user media
+   group media
+
+service imsqmidaemon /system/bin/imsqmidaemon
+    class main
+    user system
+    socket ims_qmid stream 0660 system radio
+    group ims radio net_raw log qcom_diag
+
+service imsdatadaemon /system/bin/imsdatadaemon
+    class main
+    user system
+    socket ims_datad stream 0660 system radio
+    group system ims wifi radio inet net_raw log qcom_diag net_admin
+    disabled
+
+service immvibed /system/bin/immvibed
+    class late_start
+    user system
+    group system
+    oneshot
+
+service sysmatsir /system/bin/smonsir
+    user root
+    group root
+    oneshot
+    disabled
+
+service sysmatpro /system/bin/smprosrv
+    user root
+    group root
+    oneshot
+    disabled
+
+on property:persist.sys.matsir.enable=1
+    setprop sys.sysmat.service.control start
+    start sysmatsir
+    start sysmatpro
+
+on property:sys.ims.QMI_DAEMON_STATUS=1
+    start imsdatadaemon
+
+service ims_rtp_daemon /system/bin/ims_rtp_daemon
+   class main
+   user system
+   socket ims_rtpd stream 0660 system ims
+   group ims net_raw diag qcom_diag log
+   disabled
+
+on property:sys.ims.DATA_DAEMON_STATUS=1
+    start ims_rtp_daemon
+
+service wcnss-service /system/bin/wcnss_service
+   class late_start
+   user system
+   group system wifi
+   oneshot
+
+#service ppd /system/bin/mm-pp-daemon
+#    class late_start
+#    user system
+#    socket pps stream 0660 system system
+#    group system graphics
+
+on property:init.svc.surfaceflinger=stopped
+    stop ppd
+
+on property:persist.sys.display_prefer=0
+    write /sys/devices/virtual/graphics/fb0/msm_fb_dispparam 2
+
+on property:persist.sys.display_prefer=1
+    write /sys/devices/virtual/graphics/fb0/msm_fb_dispparam 1
+
+on property:persist.sys.display_prefer=2
+    write /sys/devices/virtual/graphics/fb0/msm_fb_dispparam 2
+
+on property:persist.sys.display_prefer=3
+    write /sys/devices/virtual/graphics/fb0/msm_fb_dispparam 3
+
+on property:persist.sys.display_ce=10
+    write /sys/devices/virtual/graphics/fb0/msm_fb_dispparam 240
+
+on property:persist.sys.display_ce=11
+    write /sys/devices/virtual/graphics/fb0/msm_fb_dispparam 16

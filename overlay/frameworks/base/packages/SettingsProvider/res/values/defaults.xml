@@ -18,5 +18,9 @@
 -->
 <resources>
     <!-- Fade the screen off by default -->
+<<<<<<< HEAD
     <integer name="def_screen_animation_style">1</integer>
+=======
+    <!--<integer name="def_screen_animation_style">1</integer>-->
+>>>>>>> dba863d27465b97a4b47812ec9c7e045aea22c42
 </resources>

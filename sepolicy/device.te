@@ -1,5 +1,9 @@
 # GPU (used by most UI apps)
+<<<<<<< HEAD
 type gpu_device, dev_type;
+=======
+# type gpu_device, dev_type;
+>>>>>>> dba863d27465b97a4b47812ec9c7e045aea22c42
 
 # BT lock device for BCM4335
 type btlock_device, dev_type;

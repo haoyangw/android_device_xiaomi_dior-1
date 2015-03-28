@@ -1,5 +1,6 @@
 LOCAL_PATH := $(call my-dir)
 
+<<<<<<< HEAD
 ifneq ($(BUILD_WITH_COLORS),0)
   CL_RED="\033[31m"
   CL_GRN="\033[32m"
@@ -10,11 +11,17 @@ ifneq ($(BUILD_WITH_COLORS),0)
   CL_RST="\033[0m"
 endif
 
+=======
+>>>>>>> dba863d27465b97a4b47812ec9c7e045aea22c42
 DTBTOOL := $(LOCAL_PATH)/mkbootimg_dtb
 KERNEL := $(LOCAL_PATH)/kernel
 DTB := $(LOCAL_PATH)/dt.img
 
+<<<<<<< HEAD
 #$(shell cp -f $(LOCAL_PATH)/dt.img $(PRODUCT_OUT)/dt.img)
+=======
+$(shell cp -f $(LOCAL_PATH)/dt.img $(PRODUCT_OUT)/dt.img)
+>>>>>>> dba863d27465b97a4b47812ec9c7e045aea22c42
 
 INSTALLED_RECOVERYIMAGE_TARGET := $(PRODUCT_OUT)/recovery.img
 INSTALLED_BOOTIMAGE_TARGET := $(PRODUCT_OUT)/boot.img
@@ -22,16 +29,30 @@ INSTALLED_BOOTIMAGE_TARGET := $(PRODUCT_OUT)/boot.img
 $(INSTALLED_BOOTIMAGE_TARGET): \
     $(MKBOOTIMG) \
     $(INTERNAL_BOOTIMAGE_FILES)
+<<<<<<< HEAD
 	@echo -e ${CL_CYN}"----- Made boot image -------- $@"${CL_RST}
 	$(hide) $(DTBTOOL) --kernel $(KERNEL) --ramdisk $(PRODUCT_OUT)/ramdisk.img --cmdline "$(BOARD_KERNEL_CMDLINE)" $(BOARD_MKBOOTIMG_ARGS_PRE) --dt $(DTB)  --output $@
 	$(hide) $(call assert-max-image-size,$@,$(BOARD_BOOTIMAGE_PARTITION_SIZE),raw)
 	@echo -e ${CL_GRN}"----- Added DTB ------------------ $@"${CL_RST}
+=======
+	@echo ----- Made boot image -------- $@
+	$(hide) $(DTBTOOL) --kernel $(KERNEL) --ramdisk $(PRODUCT_OUT)/ramdisk.img --cmdline "$(BOARD_KERNEL_CMDLINE)" $(BOARD_MKBOOTIMG_ARGS_PRE) --dt $(DTB)  --output $@
+	$(hide) $(call assert-max-image-size,$@,$(BOARD_BOOTIMAGE_PARTITION_SIZE),raw)
+	@echo ----- Added DTB ------------------ $@
+>>>>>>> dba863d27465b97a4b47812ec9c7e045aea22c42
 	
 $(INSTALLED_RECOVERYIMAGE_TARGET): \
     $(MKBOOTIMG) \
 	$(recovery_ramdisk)
+<<<<<<< HEAD
 	@echo -e ${CL_CYN}"----- Made recovery image -------- $@"${CL_RST}
 	$(hide) $(DTBTOOL) --kernel $(KERNEL) --ramdisk $(PRODUCT_OUT)/ramdisk-recovery.img --cmdline "$(BOARD_KERNEL_CMDLINE)"  $(BOARD_MKBOOTIMG_ARGS_PRE) --dt $(DTB)  --output $@
 	$(hide) $(call assert-max-image-size,$@, $(BOARD_RECOVERYIMAGE_PARTITION_SIZE),raw)
 	@echo -e ${CL_GRN}"----- Added DTB ------------------ $@"${CL_RST}
+=======
+	@echo ----- Made recovery image -------- $@
+	$(hide) $(DTBTOOL) --kernel $(KERNEL) --ramdisk $(PRODUCT_OUT)/ramdisk-recovery.img --cmdline "$(BOARD_KERNEL_CMDLINE)"  $(BOARD_MKBOOTIMG_ARGS_PRE) --dt $(DTB)  --output $@
+	$(hide) $(call assert-max-image-size,$@, $(BOARD_RECOVERYIMAGE_PARTITION_SIZE),raw)
+	@echo ----- Added DTB ------------------ $@
+>>>>>>> dba863d27465b97a4b47812ec9c7e045aea22c42
 

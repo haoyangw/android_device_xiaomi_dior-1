@@ -3,6 +3,7 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/languages_full.mk)
 # The gps config appropriate for this device
 # $(call inherit-product, device/common/gps/gps_us_supl.mk)
 
+<<<<<<< HEAD
 # Overlay
 DEVICE_PACKAGE_OVERLAYS += $(LOCAL_PATH)/overlay
 
@@ -13,6 +14,20 @@ $(call inherit-product, vendor/xiaomi/dior/dior-vendor.mk)
 PRODUCT_AAPT_CONFIG := normal hdpi xhdpi
 PRODUCT_AAPT_PREF_CONFIG := xhdpi
 
+=======
+$(call inherit-product, frameworks/native/build/phone-xhdpi-1024-dalvik-heap.mk)
+
+# Overlay
+DEVICE_PACKAGE_OVERLAYS += $(LOCAL_PATH)/overlay
+
+# Proprietary files
+$(call inherit-product, vendor/xiaomi/dior/dior-vendor.mk)
+
+# Device uses high-density artwork where available
+PRODUCT_AAPT_CONFIG := normal hdpi xhdpi
+PRODUCT_AAPT_PREF_CONFIG := xhdpi
+
+>>>>>>> dba863d27465b97a4b47812ec9c7e045aea22c42
 LOCAL_PATH := device/xiaomi/dior
 ifeq ($(TARGET_PREBUILT_KERNEL),)
 	LOCAL_KERNEL := $(LOCAL_PATH)/kernel
@@ -82,7 +97,10 @@ init.qcom.fm.sh
 
 PRODUCT_PACKAGES += \
 chargeonlymode \
+<<<<<<< HEAD
 init.recovery.qcom.rc \
+=======
+>>>>>>> dba863d27465b97a4b47812ec9c7e045aea22c42
 fstab.qcom \
 init.qcom.rc \
 init.qcom.usb.rc \

@@ -1,0 +1,51 @@
+
+# Audio
+ro.qc.sdk.audio.ssr=false
+ro.qc.sdk.audio.fluencetype=fluence
+persist.audio.fluence.voicecall=true
+persist.audio.fluence.voicerec=false
+persist.audio.fluence.speaker=true
+audio.offload.buffer.size.kb=32
+audio.offload.gapless.enabled=true
+audio.offload.pcm.16bit.enable=true
+audio.offload.pcm.24bit.enable=true
+audio.offload.disable=1
+av.offload.enable=true
+use.voice.path.for.pcm.voip=true
+
+# Display
+ro.opengles.version=196608
+ro.sf.lcd_density=320
+debug.sf.fb_always_on=1
+debug.sf.hw=1
+debug.egl.hw=1
+debug.composition.type=c2d
+persist.hwc.mdpcomp.enable=true
+debug.mdpcomp.logs=0
+dev.pm.dyn_samplingrate=1
+
+# Location
+ro.gps.agps_provider=1
+ro.qc.sdk.izat.premium_enabled=1
+ro.qc.sdk.izat.service_mask=0x5
+persist.gps.qc_nlp_in_use=1
+persist.loc.nlp_name=com.qualcomm.services.location
+
+# Media
+media.stagefright.enable-player=true
+media.stagefright.enable-http=true
+media.stagefright.enable-aac=true
+media.stagefright.enable-qcp=true
+media.stagefright.enable-fma2dp=true
+media.stagefright.enable-scan=true
+mmp.enable.3g2=true
+mm.enable.smoothstreaming=true
+mm.enable.qcom_parser=37491
+
+# Telephony
+rild.libpath=/vendor/lib/libril-qc-qmi-1.so
+rild.libargs=-d /dev/smd0
+ril.subscription.types=RUIM
+persist.data.netmgrd.qos.enable=true
+persist.radio.msgtunnel.start=false
+persist.radio.ramdump_sdcard=1

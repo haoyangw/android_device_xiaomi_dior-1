@@ -17,6 +17,9 @@
 # Default toolchain
 TARGET_GCC_VERSION_EXP := 4.8
 
+# External apps on SD
+TARGET_EXTERNAL_APPS = sdcard1
+
 # Bootloader
 TARGET_BOOTLOADER_BOARD_NAME := MSM8226
 TARGET_NO_BOOTLOADER := true

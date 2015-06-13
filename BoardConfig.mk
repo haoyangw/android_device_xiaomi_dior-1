@@ -14,6 +14,9 @@
 # limitations under the License.
 #
 
+# Default toolchain
+TARGET_GCC_VERSION_EXP := 4.8
+
 # Bootloader
 TARGET_BOOTLOADER_BOARD_NAME := MSM8226
 TARGET_NO_BOOTLOADER := true

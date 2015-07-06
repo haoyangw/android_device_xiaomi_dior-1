@@ -148,6 +148,11 @@ PRODUCT_PACKAGES += \
     libqcomfm_jni \
     qcom.fmradio
 
+PRODUCT_BOOT_JARS += qcom.fmradio
+
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.fm.transmitter=false
+
 # GPS
 PRODUCT_PACKAGES += \
     gps.msm8226

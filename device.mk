@@ -96,6 +96,10 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/media/GoodMorning.ogg:system/media/audio/alarms/GoodMorning.ogg \
     $(LOCAL_PATH)/media/MI.ogg:system/media/audio/ringtones/MI.ogg
 
+# Dirac Audio Effect
+PRODUCT_COPY_FILES += $(LOCAL_PATH)/configs/diracmobile.config:system/vendor/etc/diracmobile.config
+PRODUCT_PACKAGES += libdirac
+
 # Display
 PRODUCT_PACKAGES += \
     copybit.msm8226 \

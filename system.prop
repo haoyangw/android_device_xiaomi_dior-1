@@ -12,6 +12,14 @@ audio.offload.pcm.24bit.enable=true
 audio.offload.disable=1
 av.offload.enable=true
 use.voice.path.for.pcm.voip=true
+qcom.hw.aac.encoder=false
+
+# AV
+media.aac_51_output_enabled=true
+mm.enable.smoothstreaming=true
+
+# System property for cabl
+ro.qualcomm.cabl=0
 
 # Display
 ro.opengles.version=196608

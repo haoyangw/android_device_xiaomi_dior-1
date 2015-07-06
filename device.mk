@@ -120,6 +120,12 @@ PRODUCT_PACKAGES += \
     resize2fs \
     setup_fs
 
+#ffmpeg omxcodec
+PRODUCT_PACKAGES += \
+    libffmpeg_utils \
+    libstagefright_soft_ffmpegadec \
+    libFFmpegExtractor
+
 # FM
 PRODUCT_PACKAGES += \
     FM2 \

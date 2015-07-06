@@ -84,6 +84,18 @@ PRODUCT_PACKAGES += \
     regdbdump \
     regulatory.bin
 
+# Default Audio
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.config.ringtone=MI.ogg \
+    ro.config.notification_sound=FadeIn.ogg \
+    ro.config.alarm_alert=GoodMorning.ogg
+
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/media/FadeIn.ogg:system/media/audio/notifications/FadeIn.ogg \
+    $(LOCAL_PATH)/media/FadeOut.ogg:system/media/audio/notifications/FadeOut.ogg \
+    $(LOCAL_PATH)/media/GoodMorning.ogg:system/media/audio/alarms/GoodMorning.ogg \
+    $(LOCAL_PATH)/media/MI.ogg:system/media/audio/ringtones/MI.ogg
+
 # Display
 PRODUCT_PACKAGES += \
     copybit.msm8226 \

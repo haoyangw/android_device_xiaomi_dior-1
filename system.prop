@@ -13,6 +13,7 @@ audio.offload.disable=1
 av.offload.enable=true
 use.voice.path.for.pcm.voip=true
 qcom.hw.aac.encoder=false
+persist.sys.media.use-awesome=true
 
 # AV
 media.aac_51_output_enabled=true

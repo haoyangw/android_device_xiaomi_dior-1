@@ -38,6 +38,9 @@ ro.gps.agps_provider=1
 ro.qc.sdk.izat.premium_enabled=1
 ro.qc.sdk.izat.service_mask=0x5
 
+# Font cache size
+ro.hwui.text_large_cache_height=2048
+
 # Media
 media.stagefright.enable-player=true
 media.stagefright.enable-http=true

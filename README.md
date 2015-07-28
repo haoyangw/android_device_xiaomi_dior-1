@@ -6,7 +6,7 @@ Quick specs for Xiaomi Redmi Note 4G
 Basic   | Spec Sheet
 -------:|:-------------------------
 SIM | Normal SIM
-Chipset	| Qualcomm MSM8928 Snapdragon 400
+Chipset	| Qualcomm MSM8226 Snapdragon 400
 CPU     | Quad-core 1.6 GHz Cortex-A7
 GPU     | Adreno 305
 Memory  | 2 GB RAM 

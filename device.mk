@@ -141,6 +141,10 @@ PRODUCT_COPY_FILES += \
     #$(LOCAL_PATH)/keylayout/msm8226-tapan-snd-card_Button_Jack0.kl:system/usr/keylayout/msm8226-tapan-snd-card_Button_Jack0.kl \
     #$(LOCAL_PATH)/keylayout/msm8226-tapan-snd-card_Button_Jack1.kl:system/usr/keylayout/msm8226-tapan-snd-card_Button_Jack1.kl
 
+# Open camera to fix front camera
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/opencamera/OpenCamera:system/priv-app/OpenCamera
+
 # Keystore
 PRODUCT_PACKAGES += \
     keystore.msm8226

@@ -127,10 +127,19 @@ PRODUCT_COPY_FILES += \
 
 # Keylayouts
 PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/keylayout/atmel-maxtouch.kl:system/usr/keylayout/atmel-maxtouch.kl \
+    $(LOCAL_PATH)/keylayout/AVRCP.kl:system/usr/keylayout/AVRCP.kl \
     $(LOCAL_PATH)/keylayout/ft5x06.kl:system/usr/keylayout/ft5x06.kl \
     $(LOCAL_PATH)/keylayout/gpio-keys.kl:system/usr/keylayout/gpio-keys.kl \
-    $(LOCAL_PATH)/keylayout/msm8226-tapan-snd-card_Button_Jack0.kl:system/usr/keylayout/msm8226-tapan-snd-card_Button_Jack0.kl \
-    $(LOCAL_PATH)/keylayout/msm8226-tapan-snd-card_Button_Jack1.kl:system/usr/keylayout/msm8226-tapan-snd-card_Button_Jack1.kl
+    $(LOCAL_PATH)/keylayout/ist30xx.kl:system/usr/keylayout/ist30xx.kl \
+    $(LOCAL_PATH)/keylayout/msm8226-tapan-snd-card_Button_Jack.kl:system/usr/keylayout/msm8226-tapan-snd-card_Button_Jack.kl \
+    $(LOCAL_PATH)/keylayout/qwerty.kl:system/usr/keylayout/qwerty.kl \
+    $(LOCAL_PATH)/keylayout/synaptics_rmi4_i2c.kl:system/usr/keylayout/synaptics_rmi4_i2c.kl
+
+    #$(LOCAL_PATH)/keylayout/ft5x06.kl:system/usr/keylayout/ft5x06.kl \
+    #$(LOCAL_PATH)/keylayout/gpio-keys.kl:system/usr/keylayout/gpio-keys.kl \
+    #$(LOCAL_PATH)/keylayout/msm8226-tapan-snd-card_Button_Jack0.kl:system/usr/keylayout/msm8226-tapan-snd-card_Button_Jack0.kl \
+    #$(LOCAL_PATH)/keylayout/msm8226-tapan-snd-card_Button_Jack1.kl:system/usr/keylayout/msm8226-tapan-snd-card_Button_Jack1.kl
 
 # Keystore
 PRODUCT_PACKAGES += \

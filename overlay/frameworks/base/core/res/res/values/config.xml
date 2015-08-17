@@ -207,7 +207,7 @@
     <integer name="config_deviceHardwareWakeKeys">64</integer>
 
     <!-- Allow changing button backlight brightness in Settings -->
-    <integer name="config_buttonBrightnessSettingDefault">140</integer>
+    <integer name="config_buttonBrightnessSettingDefault">0</integer>
     <bool name="config_deviceHasVariableButtonBrightness">true</bool>
 
     <bool name="config_enableNetworkLocationOverlay" translatable="false">false</bool>

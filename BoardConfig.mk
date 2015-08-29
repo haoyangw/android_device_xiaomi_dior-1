@@ -42,10 +42,13 @@ TARGET_PREBUILT_KERNEL := device/xiaomi/dior/kernel
 TARGET_KERNEL_SOURCE := kernel/xiaomi/dior
 ifeq ("$(wildcard $(TARGET_KERNEL_SOURCE))","")
 ifneq ("$(wildcard $(TARGET_PREBUILT_KERNEL))","")
-$(shell mkdir -p $(TARGET_OUT_INTERMEDIATES)/KERNEL_OBJ/usr)
+$(shell mkdir -p $(OUT)/obj)
+$(shell mkdir -p $(OUT)/obj/KERNEL_OBJ)
+$(shell mkdir -p $(OUT)/obj/KERNEL_OBJ/usr)
 endif
 endif
 TARGET_KERNEL_CONFIG := cyanogenmod_dior_defconfig
+#TARGET_KERNEL_CONFIG := cm_dior_defconfig
 BOARD_KERNEL_CMDLINE := console=ttyHSL0,115200,n8 androidboot.console=ttyHSL0 androidboot.hardware=dior user_debug=31 msm_rtb.filter=0x37
 BOARD_KERNEL_BASE := 0x00000000
 BOARD_KERNEL_PAGESIZE := 2048

@@ -207,7 +207,7 @@
     <integer name="config_deviceHardwareWakeKeys">64</integer>
 
     <!-- Allow changing button backlight brightness in Settings -->
-    <integer name="config_buttonBrightnessSettingDefault">140</integer>
+    <integer name="config_buttonBrightnessSettingDefault">0</integer>
     <bool name="config_deviceHasVariableButtonBrightness">true</bool>
 
     <bool name="config_enableNetworkLocationOverlay" translatable="false">false</bool>
@@ -272,5 +272,8 @@
          for "perf_profile_values" array. Leave it blank if the device do not support
          performance profiles  -->
     <string name="config_perf_profile_default_entry" translatable="false">1</string>
+
+    <!-- Package name providing default WebView implementation. -->
+    <string name="config_webViewPackageName" translatable="false">com.google.android.webview</string>
 
 </resources>

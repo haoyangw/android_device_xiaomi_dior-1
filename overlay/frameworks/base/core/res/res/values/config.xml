@@ -208,7 +208,8 @@
 
     <!-- Allow changing button backlight brightness in Settings -->
     <integer name="config_buttonBrightnessSettingDefault">0</integer>
-    <bool name="config_deviceHasVariableButtonBrightness">true</bool>
+    <!-- Comment out this line for now since it seems button brightness is not adjustible-->
+    <!--<bool name="config_deviceHasVariableButtonBrightness">true</bool>-->
 
     <bool name="config_enableNetworkLocationOverlay" translatable="false">true</bool>
     <!-- Package name providing network location support. Used only when

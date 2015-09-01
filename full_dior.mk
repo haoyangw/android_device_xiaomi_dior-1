@@ -1,11 +1,11 @@
 #
-# Copyright (C) 2014 The CyanogenMod Project
+# Copyright 2014 The Android Open Source Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
 # You may obtain a copy of the License at
 #
-# http://www.apache.org/licenses/LICENSE-2.0
+#      http://www.apache.org/licenses/LICENSE-2.0
 #
 # Unless required by applicable law or agreed to in writing, software
 # distributed under the License is distributed on an "AS IS" BASIS,
@@ -14,15 +14,20 @@
 # limitations under the License.
 #
 
-# Inherit from those products. Most specific first.
+# Sample: This is where we'd set a backup provider if we had one
+# $(call inherit-product, device/sample/products/backup_overlay.mk)
+
+# Inherit from the common Open Source product configuration
 $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
 
-# Inherit from armani device
-$(call inherit-product, device/xiaomi/dior/device_dior.mk)
+# Inherit from hardware-specific part of the product configuration
+$(call inherit-product, device/xiaomi/dior/device.mk)
 
-# Device identifier. This must come after all inclusions.
 PRODUCT_DEVICE := dior
 PRODUCT_NAME := full_dior
 PRODUCT_BRAND := Xiaomi
 PRODUCT_MODEL := HM_NOTE_1LTE
 PRODUCT_MANUFACTURER := Xiaomi
+PRODUCT_RESTRICT_VENDOR_FILES := false
+
+

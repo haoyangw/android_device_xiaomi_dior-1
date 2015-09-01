@@ -1,0 +1,15 @@
+on init
+    write /sys/class/leds/lcd-backlight/brightness 100
+    write /sys/class/android_usb/android0/iManufacturer "Xiaomi"
+
+    setprop usb.vendor "2717"
+    setprop usb.product.mtpadb "1368"
+    
+on property:ro.boot.modem=LTETD
+    write /sys/class/android_usb/android0/iProduct "HM NOTE 1LTETD"
+on property:ro.boot.modem=LTEW
+    write /sys/class/android_usb/android0/iProduct "HM NOTE 1LTEW"
+on property:ro.boot.modem=LTEGLOBAL
+    write /sys/class/android_usb/android0/iProduct "HM NOTE 1LTEGLOBAL"
+
+

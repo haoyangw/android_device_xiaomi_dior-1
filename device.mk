@@ -105,13 +105,9 @@ PRODUCT_PACKAGES += \
     copybit.msm8226 \
     gralloc.msm8226 \
     hwcomposer.msm8226 \
-<<<<<<< HEAD
-    memtrack.msm8226
-=======
     memtrack.msm8226 \
     liboverlay \
     libemoji
->>>>>>> 91cfeed... Dalvik-precise
 
 # Ebtables
 PRODUCT_PACKAGES += \

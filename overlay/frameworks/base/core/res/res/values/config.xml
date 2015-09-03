@@ -207,7 +207,7 @@
     <integer name="config_deviceHardwareWakeKeys">64</integer>
 
     <!-- Allow changing button backlight brightness in Settings -->
-    <integer name="config_buttonBrightnessSettingDefault">0</integer>
+    <integer name="config_buttonBrightnessSettingDefault">2</integer>
     <!-- Comment out this line for now since it seems button brightness is not adjustible-->
     <!--<bool name="config_deviceHasVariableButtonBrightness">true</bool>-->
 

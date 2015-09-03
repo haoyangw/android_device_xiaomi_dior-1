@@ -65,8 +65,8 @@ PRODUCT_PACKAGES += \
     init.qcom.bt.sh
 
 # Camera
-PRODUCT_PACKAGES += \
-	camera.msm8226
+#PRODUCT_PACKAGES += \
+#	camera.msm8226
 
 PRODUCT_PROPERTY_OVERRIDES += \
     camera2.portability.force_api=1
@@ -272,6 +272,12 @@ PRODUCT_PACKAGES += \
     libQWiFiSoftApCfg \
     libwcnss_qmi \
     wcnss_service
+
+# Root the ROM even if it is user build, sorry I broke the rules :P
+ifeq ($(TARGET_BUILD_VARIANT),user)
+PRODUCT_PACKAGES += \
+    su
+endif
 
 PRODUCT_PROPERTY_OVERRIDES += \
     wifi.interface=wlan0

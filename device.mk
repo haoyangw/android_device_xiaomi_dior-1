@@ -31,6 +31,11 @@ PRODUCT_PACKAGES += \
     com.dsi.ant.antradio_library \
     libantradio
 
+# Art
+PRODUCT_PROPERTY_OVERRIDES += \
+    dalvik.vm.image-dex2oat-filter=everything \
+    dalvik.vm.dex2oat-filter=everything
+
 # Audio
 PRODUCT_PACKAGES += \
     audiod \
@@ -60,8 +65,8 @@ PRODUCT_PACKAGES += \
     init.qcom.bt.sh
 
 # Camera
-PRODUCT_PACKAGES += \
-	camera.msm8226
+#PRODUCT_PACKAGES += \
+#	camera.msm8226
 
 PRODUCT_PROPERTY_OVERRIDES += \
     camera2.portability.force_api=1
@@ -84,12 +89,30 @@ PRODUCT_PACKAGES += \
     regdbdump \
     regulatory.bin
 
+# Default Audio
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.config.ringtone=MI.ogg \
+    ro.config.notification_sound=FadeIn.ogg \
+    ro.config.alarm_alert=GoodMorning.ogg
+
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/media/FadeIn.ogg:system/media/audio/notifications/FadeIn.ogg \
+    $(LOCAL_PATH)/media/FadeOut.ogg:system/media/audio/notifications/FadeOut.ogg \
+    $(LOCAL_PATH)/media/GoodMorning.ogg:system/media/audio/alarms/GoodMorning.ogg \
+    $(LOCAL_PATH)/media/MI.ogg:system/media/audio/ringtones/MI.ogg
+
+# Dirac Audio Effect
+PRODUCT_COPY_FILES += $(LOCAL_PATH)/configs/diracmobile.config:system/vendor/etc/diracmobile.config
+PRODUCT_PACKAGES += libdirac
+
 # Display
 PRODUCT_PACKAGES += \
     copybit.msm8226 \
     gralloc.msm8226 \
     hwcomposer.msm8226 \
-    memtrack.msm8226
+    memtrack.msm8226 \
+    liboverlay \
+    libemoji
 
 # Ebtables
 PRODUCT_PACKAGES += \
@@ -97,12 +120,33 @@ PRODUCT_PACKAGES += \
     ethertypes \
     libebtc
 
-# Filesystem
+# Filesystem management tools
 PRODUCT_PACKAGES += \
     e2fsck \
     make_ext4fs \
     resize2fs \
     setup_fs
+    e2fsck \
+    setup_fs \
+    mke2fs \
+    tune2fs \
+    mount.exfat \
+    fsck.exfat \
+    mkfs.exfat \
+    ntfsfix \
+    ntfs-3g \
+    mkntfs \
+    dumpe2fs \
+    resize2fs \
+    e2fsck_static \
+    mke2fs_static \
+    resize2fs_static
+
+#ffmpeg omxcodec
+PRODUCT_PACKAGES += \
+    libffmpeg_utils \
+    libstagefright_soft_ffmpegadec \
+    libFFmpegExtractor
 
 # FM
 PRODUCT_PACKAGES += \
@@ -110,6 +154,11 @@ PRODUCT_PACKAGES += \
     FMRecord \
     libqcomfm_jni \
     qcom.fmradio
+
+PRODUCT_BOOT_JARS += qcom.fmradio
+
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.fm.transmitter=false
 
 # GPS
 PRODUCT_PACKAGES += \
@@ -186,24 +235,31 @@ PRODUCT_BOOT_JARS += \
 # Permissions
 PRODUCT_COPY_FILES += \
     external/ant-wireless/antradio-library/com.dsi.ant.antradio_library.xml:system/etc/permissions/com.dsi.ant.antradio_library.xml \
+    frameworks/native/data/etc/handheld_core_hardware.xml:system/etc/permissions/handheld_core_hardware.xml \
     frameworks/native/data/etc/android.hardware.audio.low_latency.xml:system/etc/permissions/android.hardware.audio.low_latency.xml \
-    frameworks/native/data/etc/android.hardware.bluetooth_le.xml:system/etc/permissions/android.hardware.bluetooth_le.xml \
     frameworks/native/data/etc/android.hardware.camera.flash-autofocus.xml:system/etc/permissions/android.hardware.camera.flash-autofocus.xml \
     frameworks/native/data/etc/android.hardware.camera.front.xml:system/etc/permissions/android.hardware.camera.front.xml \
-    frameworks/native/data/etc/android.hardware.ethernet.xml:system/etc/permissions/android.hardware.ethernet.xml \
+    frameworks/native/data/etc/android.hardware.camera.full.xml:system/etc/permissions/android.hardware.camera.full.xml \
+    frameworks/native/data/etc/android.hardware.camera.raw.xml:system/etc/permissions/android.hardware.camera.raw.xml \
     frameworks/native/data/etc/android.hardware.location.gps.xml:system/etc/permissions/android.hardware.location.gps.xml \
-    frameworks/native/data/etc/android.hardware.sensor.gyroscope.xml:system/etc/permissions/android.hardware.sensor.gyroscope.xml \
+    frameworks/native/data/etc/android.hardware.wifi.xml:system/etc/permissions/android.hardware.wifi.xml \
+    frameworks/native/data/etc/android.hardware.wifi.direct.xml:system/etc/permissions/android.hardware.wifi.direct.xml \
+    frameworks/native/data/etc/android.hardware.sensor.accelerometer.xml:system/etc/permissions/android.hardware.sensor.accelerometer.xml \
+    frameworks/native/data/etc/android.hardware.sensor.barometer.xml:system/etc/permissions/android.hardware.sensor.barometer.xml \
+    frameworks/native/data/etc/android.hardware.sensor.compass.xml:system/etc/permissions/android.hardware.compass.xml \
     frameworks/native/data/etc/android.hardware.sensor.light.xml:system/etc/permissions/android.hardware.sensor.light.xml \
+    frameworks/native/data/etc/android.hardware.sensor.gyroscope.xml:system/etc/permissions/android.hardware.sensor.gyroscope.xml \
     frameworks/native/data/etc/android.hardware.sensor.proximity.xml:system/etc/permissions/android.hardware.sensor.proximity.xml \
-    frameworks/native/data/etc/android.hardware.telephony.cdma.xml:system/etc/permissions/android.hardware.telephony.cdma.xml \
-    frameworks/native/data/etc/android.hardware.telephony.gsm.xml:system/etc/permissions/android.hardware.telephony.gsm.xml \
+    frameworks/native/data/etc/android.hardware.sensor.stepcounter.xml:system/etc/permissions/android.hardware.sensor.stepcounter.xml \
+    frameworks/native/data/etc/android.hardware.sensor.stepdetector.xml:system/etc/permissions/android.hardware.sensor.stepdetector.xml \
     frameworks/native/data/etc/android.hardware.touchscreen.multitouch.jazzhand.xml:system/etc/permissions/android.hardware.touchscreen.multitouch.jazzhand.xml \
     frameworks/native/data/etc/android.hardware.usb.accessory.xml:system/etc/permissions/android.hardware.usb.accessory.xml \
     frameworks/native/data/etc/android.hardware.usb.host.xml:system/etc/permissions/android.hardware.usb.host.xml \
-    frameworks/native/data/etc/android.hardware.wifi.direct.xml:system/etc/permissions/android.hardware.wifi.direct.xml \
-    frameworks/native/data/etc/android.hardware.wifi.xml:system/etc/permissions/android.hardware.wifi.xml \
     frameworks/native/data/etc/android.software.sip.voip.xml:system/etc/permissions/android.software.sip.voip.xml \
-    frameworks/native/data/etc/handheld_core_hardware.xml:system/etc/permissions/handheld_core_hardware.xml
+    frameworks/native/data/etc/android.hardware.telephony.gsm.xml:system/etc/permissions/android.hardware.telephony.gsm.xml \
+    frameworks/native/data/etc/android.hardware.telephony.cdma.xml:system/etc/permissions/android.hardware.telephony.cdma.xml \
+    frameworks/native/data/etc/android.hardware.bluetooth_le.xml:system/etc/permissions/android.hardware.bluetooth_le.xml \
+    frameworks/native/data/etc/android.software.print.xml:system/etc/permissions/android.software.print.xml
 
 # Power
 PRODUCT_PACKAGES += \
@@ -239,6 +295,9 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_PACKAGES += \
     com.android.future.usb.accessory
 
+# We have enough storage space to hold precise GC data
+PRODUCT_TAGS += dalvik.gc.type-precise
+
 # Wifi
 PRODUCT_PACKAGES += \
     hostapd_default.conf \
@@ -267,6 +326,12 @@ PRODUCT_PACKAGES += \
     libQWiFiSoftApCfg \
     libwcnss_qmi \
     wcnss_service
+
+# Root the ROM even if it is user build, sorry I broke the rules :P
+ifeq ($(TARGET_BUILD_VARIANT),user)
+PRODUCT_PACKAGES += \
+    su
+endif
 
 PRODUCT_PROPERTY_OVERRIDES += \
     wifi.interface=wlan0

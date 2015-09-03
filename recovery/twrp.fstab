@@ -1,13 +1,13 @@
 
-/system		ext4	/dev/block/platform/msm_sdcc.1/by-name/system         flags=display="系统分区(system)"
-#/data		ext4	/dev/block/platform/msm_sdcc.1/by-name/userdata 	  flags=display="数据分区(data)"
-/data		ext4	/dev/block/platform/msm_sdcc.1/by-name/userdata
-/cache		ext4	/dev/block/platform/msm_sdcc.1/by-name/cache          flags=display="缓存分区(cache)"
+/system		ext4	/dev/block/platform/msm_sdcc.1/by-name/system         flags=display="System partition(/system)"
+/data		ext4	/dev/block/platform/msm_sdcc.1/by-name/userdata 	  flags=display="Data partition(/data)"
+#/data		ext4	/dev/block/platform/msm_sdcc.1/by-name/userdata
+/cache		ext4	/dev/block/platform/msm_sdcc.1/by-name/cache          flags=display="Cache partition(/cache)"
 #/persist	ext4	/dev/block/platform/msm_sdcc.1/by-name/persist
 #/firmware	vfat	/dev/block/platform/msm_sdcc.1/by-name/modem
-/boot		emmc	/dev/block/platform/msm_sdcc.1/by-name/boot			flags=display="内核分区(boot)"
+/boot		emmc	/dev/block/platform/msm_sdcc.1/by-name/boot			flags=display="Boot partition(/boot)"
 /recovery	emmc	/dev/block/platform/msm_sdcc.1/by-name/recovery
 
 
-/external_sd   vfat      /dev/block/mmcblk1p1 		flags=display="外置SD卡(external_sd)";storage;wipeingui;removable
-/usbdisk	   vfat		 /dev/block/sda1	 		flags=display="OTG-U盘(usbdisk)";storage;removable
+/external_sd   vfat      /dev/block/mmcblk1p1 		flags=display="Micro SDcard(/external_sd)";storage;wipeingui;removable
+/usbdisk	   vfat		 /dev/block/sda1	 		flags=display="USB OTG Drive(/usbdisk)";storage;removable

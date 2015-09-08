@@ -13,8 +13,8 @@
 /dev/block/platform/msm_sdcc.1/by-name/boot         /boot          emmc      defaults                                                     defaults
 /dev/block/platform/msm_sdcc.1/by-name/recovery     /recovery      emmc      defaults                                                     defaults
 
-/devices/msm_sdcc.2/mmc_host*                       auto           auto      defaults                                                     voldmanaged=sdcard1:auto
-/devices/platform/msm_hsusb_host/usb1               auto           auto      defaults                                                     voldmanaged=usbdisk:auto
+/devices/msm_sdcc.2/mmc_host*                       /storage/sdcard1          vfat      nosuid,nodev                                             wait,voldmanaged=sdcard1:auto
+/devices/platform/msm_hsusb_host/usb1               /storage/usbotg           vfat      nosuid,nodev                                             wait,voldmanaged=usbotg:auto
 
 # ZRAM
 /dev/block/zram0                                   none            swap defaults             zramsize=268435456

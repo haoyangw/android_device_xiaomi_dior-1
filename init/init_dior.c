@@ -56,7 +56,7 @@ void vendor_load_properties()
         return;
 
 	gsm_properties("9");
-	property_set("ro.build.fingerprint", "Xiaomi/dior/dior:4.4.4/KTU74P/5.8.28:user/relase-keys");
+	property_set("ro.build.fingerprint", "Xiaomi/dior/dior:4.4.4/KTU74P/5.8.28:user/release-keys");
 	property_set("ro.build.description", "dior-user 4.4.4 KTU84P 5.8.28 release-keys");
 	property_set("ro.product.model", "Xiaomi Note 4G");
 	property_set("ro.product.device", "dior");

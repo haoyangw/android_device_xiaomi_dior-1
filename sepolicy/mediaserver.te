@@ -2,3 +2,4 @@ allow mediaserver camera_data_file:dir rw_dir_perms;
 allow mediaserver camera_data_file:file create_file_perms;
 allow mediaserver default_prop:property_service set;
 allow mediaserver socket_device:sock_file write;
+allow mediaserver camera_device:dir search;

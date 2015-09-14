@@ -166,7 +166,7 @@ BOARD_SEPOLICY_UNION += \
        irsc_util.te \
        mediaserver.te \
        mpdecision.te \
-       mnt_storage.te \
+       rmt_storage.te \
        shell.te \
        system_app.te \
        system_server.te \

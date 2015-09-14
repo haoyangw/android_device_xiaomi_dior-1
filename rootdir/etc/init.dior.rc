@@ -140,6 +140,7 @@ on boot
     write /proc/sys/net/netfilter/nf_conntrack_tcp_be_liberal 1
 
 on post-fs-data
+    symlink /sys/kernel/debug /data/d
     mkdir /data/media 0770 media_rw media_rw
 
     # Create directories for Location services

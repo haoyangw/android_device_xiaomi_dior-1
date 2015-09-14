@@ -25,13 +25,13 @@ ro.qualcomm.cabl=0
 # Display
 ro.opengles.version=196608
 ro.sf.lcd_density=320
-debug.sf.fb_always_on=1
+#debug.sf.fb_always_on=1
 debug.sf.hw=1
 debug.egl.hw=1
 debug.composition.type=c2d
 persist.hwc.mdpcomp.enable=true
 debug.mdpcomp.logs=0
-dev.pm.dyn_samplingrate=1
+#dev.pm.dyn_samplingrate=1
 
 # Location
 ro.gps.agps_provider=1

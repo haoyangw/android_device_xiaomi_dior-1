@@ -1,3 +1,7 @@
 allow mpdecision socket_device:dir { write add_name };
-allow mpdecision socket_device:sock_file { create setattr write };
+allow mpdecision socket_device:sock_file { create setattr write e};
 allow mpdecision system_data_file:file { append open };
+
+# CPU governor (root process)
+type mpdecision, domain;
+type mpdecision_exec, exec_type, file_type;

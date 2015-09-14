@@ -163,7 +163,6 @@ BOARD_SEPOLICY_DIRS += device/xiaomi/dior/sepolicy
 # The list below is order dependent
 BOARD_SEPOLICY_UNION += \
        file.te \
-       irsc_util.te \
        mediaserver.te \
        mpdecision.te \
        rmt_storage.te \

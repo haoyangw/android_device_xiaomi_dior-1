@@ -9,6 +9,21 @@ vendor/lib/rfsa/adsp/libdspCV_skel.so
 vendor/lib/rfsa/adsp/libfastcvadsp.so
 vendor/lib/rfsa/adsp/libfastcvadsp_skel.so
 
+# ADSP firmware
+/system/vendor/firmware/adsp.b00
+/system/vendor/firmware/adsp.b01
+/system/vendor/firmware/adsp.b02
+/system/vendor/firmware/adsp.b03
+/system/vendor/firmware/adsp.b04
+/system/vendor/firmware/adsp.b05
+/system/vendor/firmware/adsp.b06
+/system/vendor/firmware/adsp.b07
+/system/vendor/firmware/adsp.b08
+/system/vendor/firmware/adsp.b10
+/system/vendor/firmware/adsp.b11
+/system/vendor/firmware/adsp.b12
+/system/vendor/firmware/adsp.mdt
+
 # Audio
 etc/acdbdata/MTP/MTP_Bluetooth_cal.acdb
 etc/acdbdata/MTP/MTP_General_cal.acdb
@@ -237,6 +252,13 @@ vendor/lib/libchromatix_skuf_ov12830_p12v01c_snapshot.so
 vendor/lib/libchromatix_skuf_ov12830_p12v01c_video_hd.so
 vendor/lib/libchromatix_skuf_ov12830_p12v01c_zsl.so
 
+#CMNLIB
+vendor/firmware/cmnlib.b00
+vendor/firmware/cmnlib.b01
+vendor/firmware/cmnlib.b02
+vendor/firmware/cmnlib.b03
+vendor/firmware/cmnlib.mdt
+
 # libactuator
 vendor/lib/libactuator_dw9714.so
 vendor/lib/libactuator_dw9714_camcorder.so
@@ -319,6 +341,35 @@ vendor/lib/libscale.so
 
 # Keystore
 
+# MBA
+vendor/firmware/mba.b00
+vendor/firmware/mba.mdt
+
+# MODEM
+vendor/firmware/modem.b00
+vendor/firmware/modem.b01
+vendor/firmware/modem.b02
+vendor/firmware/modem.b03
+vendor/firmware/modem.b04
+vendor/firmware/modem.b05
+vendor/firmware/modem.b06
+vendor/firmware/modem.b09
+vendor/firmware/modem.b11
+vendor/firmware/modem.b12
+vendor/firmware/modem.b14
+vendor/firmware/modem.b16
+vendor/firmware/modem.b17
+vendor/firmware/modem.b18
+vendor/firmware/modem.b19
+vendor/firmware/modem.b20
+vendor/firmware/modem.b21
+vendor/firmware/modem.b22
+vendor/firmware/modem.b23
+vendor/firmware/modem.b24
+vendor/firmware/modem.b27
+vendor/firmware/modem.b28
+vendor/firmware/modem.b29
+vendor/firmware/modem.mdt
 
 # Media
 vendor/lib/libDivxDrm.so

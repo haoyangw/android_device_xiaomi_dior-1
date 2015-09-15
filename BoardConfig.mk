@@ -134,6 +134,15 @@ TARGET_UNIFIED_DEVICE := true
 TARGET_INIT_VENDOR_LIB := libinit_dior
 TARGET_LIBINIT_DEFINES_FILE := device/xiaomi/dior/init/init_dior.c
 
+# Enable dex-preoptimization to speed up first boot sequence
+ifeq ($(HOST_OS),linux)
+  ifeq ($(TARGET_BUILD_VARIANT),user)
+    ifeq ($(WITH_DEXPREOPT),)
+      WITH_DEXPREOPT := true
+    endif
+  endif
+endif
+
 # Lights
 TARGET_PROVIDES_LIBLIGHT := true
 

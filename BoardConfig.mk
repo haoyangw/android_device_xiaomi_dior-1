@@ -134,6 +134,15 @@ TARGET_UNIFIED_DEVICE := true
 TARGET_INIT_VENDOR_LIB := libinit_dior
 TARGET_LIBINIT_DEFINES_FILE := device/xiaomi/dior/init/init_dior.c
 
+# Enable dex-preoptimization to speed up first boot sequence
+ifeq ($(HOST_OS),linux)
+  ifeq ($(TARGET_BUILD_VARIANT),user)
+    ifeq ($(WITH_DEXPREOPT),)
+      WITH_DEXPREOPT := true
+    endif
+  endif
+endif
+
 # Lights
 TARGET_PROVIDES_LIBLIGHT := true
 
@@ -160,6 +169,19 @@ include device/qcom/sepolicy/sepolicy.mk
 
 BOARD_SEPOLICY_DIRS += device/xiaomi/dior/sepolicy
 
+# The list below is order dependent
+BOARD_SEPOLICY_UNION += \
+       file.te \
+       mediaserver.te \
+       mpdecision.te \
+       rmt_storage.te \
+       shell.te \
+       system_app.te \
+       system_server.te \
+       thermal-engine.te \
+       vold.te \
+       zygote.te
+       
 # Vold
 BOARD_VOLD_DISC_HAS_MULTIPLE_MAJORS := true
 BOARD_VOLD_EMMC_SHARES_DEV_MAJOR := true

@@ -16,3 +16,5 @@
 
 PRODUCT_MAKEFILES := \
     $(LOCAL_DIR)/full_dior.mk
+    $(LOCAL_CMD)/FULL_CMD.MK
+    

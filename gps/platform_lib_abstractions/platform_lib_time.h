@@ -32,4 +32,8 @@
 int64_t systemTime(int clock);
 int64_t elapsedMillisSinceBoot();
 
+int32_t elapsedmillissinceboot();
+
+int32_t elapsedmillissinceboot();
+
 #endif
